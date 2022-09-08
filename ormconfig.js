@@ -1,5 +1,4 @@
 require('dotenv').config();
-const path = require('path');
 
 module.exports = {
   type: 'postgres',
@@ -8,13 +7,9 @@ module.exports = {
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  migrations: [
-    path.resolve('src', 'shared', 'infra', 'typeorm', 'migrations', '*.ts')
-  ],
-  entities: [
-    path.resolve('src', 'shared', 'infra', 'typeorm', 'entities', '*.ts')
-  ],
+  migrations: ['./src/shared/infra/typeorm/migrations/*.ts'],
+  entities: ['./src/modules/**/entities/*.ts'],
   cli: {
-    migrationsDir: path.resolve('src', 'shared', 'infra', 'typeorm', 'migrations'),
+    migrationsDir: './src/shared/infra/typeorm/migrations',
   },
-}
+};
