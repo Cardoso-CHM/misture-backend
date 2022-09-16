@@ -1,7 +1,7 @@
-import 'reflect-metadata';
-import '@shared/container';
+import "reflect-metadata";
+import "@shared/container";
 
-import { app } from './app';
+import { app } from "./app";
 
 const run = async () => {
   await app.connections();
