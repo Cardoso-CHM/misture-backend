@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryColumn,
 } from "typeorm";
+import { v4 as uuid } from "uuid";
 
 import { IUsuario } from "@modules/app/entities/IUsuario";
 
@@ -31,7 +33,16 @@ class Usuario implements IUsuario {
   criadoEm: Date;
 
   @ManyToOne(() => Perfil, (perfil) => perfil.usuarios)
+  @JoinColumn({
+    name: "perfil_id",
+  })
   perfil: Perfil;
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuid();
+    }
+  }
 }
 
 export { Usuario };

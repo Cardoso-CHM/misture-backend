@@ -2,11 +2,11 @@ import { IPerfil } from "./IPerfil";
 
 export interface IUsuario {
   id: string;
+  nome: string;
   email: string;
   senha: string;
-  nome: string;
-  perfilId: string;
   criadoEm: Date;
+  perfilId: string;
 
   perfil: IPerfil;
 }
